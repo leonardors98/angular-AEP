@@ -1,30 +1,26 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <div class="fadeIn first">
-      <img [src]="logoIMG" alt="Logo HelpCar" />
-      <p>teste </p>
+<div class="container mt-3" [formGroup]="loginFormGroup">
+  <h3>Cadastro de pessoa</h3>
+  <hr />
+  <div class="row g-3">
+    <div class="col-sm-7">
+      <app-input type="text" label="E-mail" controlName="email"></app-input>
     </div>
-    <form>
-      <input
-        type="text"
-        id="login"
-        class="fadeIn second"
-        name="login"
-        placeholder="login"
-      />
-      <input
-        type="text"
-        id="password"
-        class="fadeIn third"
-        name="login"
-        placeholder="password"
-      />
-      <input type="submit" class="fadeIn fourth" value="Log In" />
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+    <div class="col-sm-8">
+      <app-input type="text" label="Nome" controlName="nome"></app-input>
+    </div>
+    <div class="col-sm-12 mt-3">
+      <button
+        (click)="logar()"
+        type="button"
+        class="btn btn-primary"
+        [disabled]="loginFormGroup.invalid"
+      >
+        <div
+          *ngIf="buttonLoading"
+          class="spinner-border spinner-border-sm text-dark"
+        ></div>
+        <span> Entrar </span>
+      </button>
     </div>
   </div>
 </div>
